@@ -4,5 +4,9 @@
 			"path": "."
 		}
 	],
-	"settings": {}
+	"settings": {
+		"material-icon-theme.folders.associations": {
+			"DemoWebsite2": "Src"
+		}
+	}
 }
