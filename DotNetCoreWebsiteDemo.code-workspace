@@ -8,5 +8,73 @@
 		"material-icon-theme.folders.associations": {
 			"DemoWebsite2": "Src"
 		}
+	},
+	"tasks": {
+		"tasks": [
+			{
+				"label": "build",
+				"command": "dotnet",
+				"type": "process",
+				"args": [
+					"build",
+					"${workspaceFolder}/DemoWebsite2/DemoWebsite2.csproj",
+					"/property:GenerateFullPaths=true",
+					"/consoleloggerparameters:NoSummary"
+				],
+				"problemMatcher": "$msCompile"
+			},
+			{
+				"label": "publish",
+				"command": "dotnet",
+				"type": "process",
+				"args": [
+					"publish",
+					"${workspaceFolder}/DemoWebsite2/DemoWebsite2.csproj",
+					"/property:GenerateFullPaths=true",
+					"/consoleloggerparameters:NoSummary"
+				],
+				"problemMatcher": "$msCompile"
+			},
+			{
+				"label": "watch",
+				"command": "dotnet",
+				"type": "process",
+				"args": [
+					"watch",
+					"run",
+					"${workspaceFolder}/DemoWebsite2/DemoWebsite2.csproj",
+					"/property:GenerateFullPaths=true",
+					"/consoleloggerparameters:NoSummary"
+				],
+				"problemMatcher": "$msCompile"
+			},
+			{
+				"label": "clean",
+				"command": "dotnet",
+				"type": "process",
+				"args": [
+					"clean",
+					"${workspaceFolder}/DemoWebsite2",
+					"/property:GenerateFullPaths=true",
+					"/consoleloggerparameters:NoSummary"
+				],
+				"problemMatcher": "$msCompile"
+			},
+			{
+				"label": "publish-release",
+				"command": "dotnet",
+				"type": "process",
+				"args": [
+					"publish",
+					"${workspaceFolder}/DemoWebsite2",
+					"--configuration",
+					"Release",
+					"/property:GenerateFullPaths=true",
+					"/consoleloggerparameters:NoSummary"
+				],
+				"problemMatcher": "$msCompile",
+				"dependsOn": "clean"
+			}
+		]
 	}
 }
