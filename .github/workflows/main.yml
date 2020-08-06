@@ -2,7 +2,7 @@ name: PR
 
 on:
   push:
-    branches: [ features/* ]
+    branches: [ features/ ]
 
 - name: auto-create-pr-action
   uses: smartinspereira/auto-create-pr-action@v0.1.0
