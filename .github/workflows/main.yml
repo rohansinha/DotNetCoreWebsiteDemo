@@ -2,9 +2,7 @@ name: PR
 
 on:
   push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+    branches: [ features ]
 
 env:
   AZURE_WEBAPP_NAME: sdlcdemo2    # set this to your application's name
@@ -17,9 +15,5 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Checkout the repo
-      - uses: actions/checkout@v2
-
-  steps:
-    - name: auto-create-pr-action
-      uses: smartinspereira/auto-create-pr-action@v0.1.0
+      - name: auto-create-pr-action
+        uses: smartinspereira/auto-create-pr-action@v0.1.0
