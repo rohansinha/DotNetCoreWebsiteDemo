@@ -2,7 +2,24 @@ name: PR
 
 on:
   push:
-    branches: [ features/ ]
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
 
-- name: auto-create-pr-action
-  uses: smartinspereira/auto-create-pr-action@v0.1.0
+env:
+  AZURE_WEBAPP_NAME: sdlcdemo2    # set this to your application's name
+  AZURE_WEBAPP_PACKAGE_PATH: '.'      # set this to the path to your web app project, defaults to the repository root
+  DOTNET_VERSION: '3.1.301'           # set this to the dot net version to use
+  
+jobs:
+  raise-auto-pr:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout the repo
+      - uses: actions/checkout@v2
+
+  steps:
+    - name: auto-create-pr-action
+      uses: smartinspereira/auto-create-pr-action@v0.1.0
