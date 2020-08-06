@@ -1,8 +1,8 @@
-name: .NET Core PR
+name: .NET Core Push
 
 on:
-  pull_request:
-    branches: [ master ]
+  push:
+    branches: [ features/** ]
 
 env:
   AZURE_WEBAPP_NAME: sdlcdemo2    # set this to your application's name
@@ -10,7 +10,7 @@ env:
   DOTNET_VERSION: '3.1.301'           # set this to the dot net version to use
   
 jobs:
-  build-and-deploy:
+  build-and-test:
 
     runs-on: ubuntu-latest
 
@@ -28,17 +28,8 @@ jobs:
       - name: dotnet build and publish
         run: |
           dotnet restore
-          dotnet build --configuration Release
-          dotnet publish -c Release -o '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/myapp'  
+          dotnet build --configuration Release 
       
       # Run Tests
       - name: Test
         run: dotnet test --no-restore --verbosity normal
-      
-      # Deploy to Azure Web apps
-      - name: 'Run Azure webapp deploy action using publish profile credentials' 
-        uses: azure/webapps-deploy@v2
-        with:
-          app-name: ${{ env.AZURE_WEBAPP_NAME }}
-          publish-profile: ${{ secrets.azureWebAppPublishProfile }}
-          package: '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/myapp'
