@@ -5,7 +5,7 @@ on:
     branches: [ master ]
 
 env:
-  AZURE_WEBAPP_NAME: sdlcdemo2    # set this to your application's name
+  AZURE_WEBAPP_NAME: sdlcdemo2        # set this to your application's name
   AZURE_WEBAPP_PACKAGE_PATH: '.'      # set this to the path to your web app project, defaults to the repository root
   DOTNET_VERSION: '3.1.301'           # set this to the dot net version to use
   
@@ -30,6 +30,11 @@ jobs:
           dotnet restore
           dotnet build --configuration Release
           dotnet publish -c Release -o '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/myapp'  
+      
+      - uses: actions/upload-artifact@v2
+        with:
+          name: my-artifact
+          path: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/myapp
       
       # Run Tests
       - name: Test
