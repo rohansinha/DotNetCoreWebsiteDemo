@@ -24,8 +24,8 @@ jobs:
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}        
       
-      # Run dotnet build and publish
-      - name: dotnet build and publish
+      # Run dotnet restore and build
+      - name: dotnet restore build
         run: |
           dotnet restore
           dotnet build --configuration Release 
